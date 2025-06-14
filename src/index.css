@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --rotation: 0deg;
+}
+
+@layer base {
+  body {
+    @apply text-[#f6f6f6] bg-black;
+  }
+
+  * {
+    @apply m-0;
+  }
+  p {
+    @apply text-[12px] leading-7 md:text-[16px];
+  }
+
+  h1 {
+    @apply text-[32px] md:text-[48px];
+  }
+
+  h2 {
+    @apply text-[20px] font-bold md:text-[24px];
+  }
+
+  h3 {
+    @apply text-[16px] font-bold md:text-[20px];
+  }
+}
+@layer utilities {
+  .h1-before {
+    content: '"Where Every Bite Hits Right — Packed with Flavor, Served with Speed."';
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 250px 160px;
+    clip-path: circle(25% at 50% 50%);
+    color: white;
+    background-color: black;
+    transform: rotate(var(--rotation, 0deg));
+    transition: 0.3s;
+  }
+  .testimonial-card-shadow {
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px,
+      rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px,
+      rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  }
+  .pizza-position-grid {
+    box-shadow: rgba(128, 90, 213, 0.4) 5px 5px,
+      rgba(128, 90, 213, 0.2) 15px 15px, rgba(128, 90, 213, 0.05) 25px 25px;
+  }
+  .burger-position-grid {
+    grid-area: 2/2/3/3;
+    box-shadow: rgba(221, 107, 32, 0.4) 5px 5px,
+      rgba(221, 107, 32, 0.2) 15px 15px, rgba(221, 107, 32, 0.05) 25px 25px;
+  }
+  .hotdog-position-grid {
+    grid-area: 3/1/3/2;
+    box-shadow: rgba(66, 153, 225, 0.4) 5px 5px,
+      rgba(66, 153, 225, 0.2) 15px 15px, rgba(66, 153, 225, 0.05) 25px 25px;
+  }
+  .promo-card-shadow {
+    box-shadow: rgba(240, 46, 170, 0.4) 10px 10px;
+  }
+}
