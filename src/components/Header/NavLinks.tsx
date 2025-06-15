@@ -19,7 +19,7 @@ const NavLinks = () => {
         ></div>
       </Link>
       <Link
-        to=""
+        to="/About"
         className="relative"
         onMouseEnter={() => setActiveLink('about')}
         onMouseLeave={() => setActiveLink('')}

@@ -63,7 +63,7 @@ const FoodItems: FC = () => {
     console.log(loader);
     return (
       <FoodMenuButtons handleFilteringData={handleFilteringData}>
-        <img src={spinner} alt="" className="w-32 " />
+        <img src={spinner} alt="loading spinner" className="w-32 " />
       </FoodMenuButtons>
     );
   }

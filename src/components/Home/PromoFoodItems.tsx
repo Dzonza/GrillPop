@@ -2,6 +2,7 @@ import { useEffect, useState, type FC } from 'react';
 import { Link } from 'react-router-dom';
 import FoodCard from '../reusableComponents/FoodCard';
 import blastImg from '/images/blast.png';
+import spinner from '/images/spinner.svg';
 interface FoodItem {
   id: string;
   name: string;
@@ -47,7 +48,7 @@ const PromoFoodItems: FC = () => {
   }
 
   if (loader) {
-    return <p>Fetching data...</p>;
+    return <img src={spinner} alt="loading spinner" className="w-32 " />;
   }
 
   return (
@@ -58,7 +59,7 @@ const PromoFoodItems: FC = () => {
         </h2>
         <img
           src={blastImg}
-          alt=""
+          alt="comic blast image"
           className="absolute top-[50%] left-0 w-[200%] -translate-x-[30%] -translate-y-1/2 -z-10"
         />
       </div>
