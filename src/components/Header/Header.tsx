@@ -11,7 +11,7 @@ const Header = () => {
   const [isActiveNav, setIsActiveNav] = useState<boolean>(false);
 
   return (
-    <header className="px-10 h-28 flex justify-between items-center fixed w-full bg-black z-10 max-w-[1600px]">
+    <header className="px-10 h-28 flex justify-between items-center top-0 fixed w-full bg-black z-10 max-w-[1600px]">
       <Link to="/" className="text-center cursor-pointer">
         <h1 className="text-transparent p-1 text-5xl   font-luckiest bg-clip-text bg-[url('/images/fire.jpg')]  bg-cover ">
           GrillPop

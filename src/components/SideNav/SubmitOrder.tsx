@@ -8,12 +8,6 @@ interface FormDetails {
   address: string;
   comment: string;
 }
-interface FormErrorMessages {
-  name: string;
-  surname: string;
-  address: string;
-  comment: string;
-}
 
 interface SubmitOrderProps {
   setIsCheckoutClicked: (isClicked: boolean) => void;
@@ -35,7 +29,7 @@ const SubmitOrder: FC<SubmitOrderProps> = ({
     address: '',
     comment: '',
   });
-  const [errorMessage, setErrorMessage] = useState<FormErrorMessages>({
+  const [errorMessage, setErrorMessage] = useState<FormDetails>({
     name: '',
     surname: '',
     address: '',
@@ -141,6 +135,7 @@ const SubmitOrder: FC<SubmitOrderProps> = ({
             onBlur={handleError}
             value={formData.name}
             errorMessage={errorMessage.name}
+            type="text"
           />
           <Input
             id="surname"
@@ -151,6 +146,7 @@ const SubmitOrder: FC<SubmitOrderProps> = ({
             onBlur={handleError}
             value={formData.surname}
             errorMessage={errorMessage.surname}
+            type="text"
           />
           <Input
             id="address"
@@ -161,6 +157,7 @@ const SubmitOrder: FC<SubmitOrderProps> = ({
             onBlur={handleError}
             value={formData.address}
             errorMessage={errorMessage.address}
+            type="text"
           />
           <section className="flex flex-col">
             <label
