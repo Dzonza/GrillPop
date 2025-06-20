@@ -29,13 +29,13 @@ const userTestimonials = [
 
 const Testimonials = () => {
   return (
-    <section className="py-32">
+    <section className="py-20 sm:py-32">
       <img
         src={testimonialsTitle}
         alt="testimonials title"
-        className="mx-auto"
+        className="sm:px-20 md:mx-auto"
       />
-      <section className="p-20 grid grid-cols-[repeat(2,500px)] gap-14 justify-center">
+      <section className="p-5 py-10 sm:p-20 grid grid-cols-1 sm:grid-cols-[500px] lg:grid-cols-[repeat(2,500px)] gap-14 justify-center">
         {userTestimonials.map((testimonial) => (
           <TestimonialsCard
             key={testimonial.id}

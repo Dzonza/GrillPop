@@ -1,6 +1,6 @@
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useContext, type FC } from 'react';
-import { FoodList } from '../../store/foodList-context';
+import { FoodList } from '../../../store/foodList-context';
 import QuantityOrder from './QuantityOrder';
 
 const OrderList: FC<{ setIsCheckoutClicked: (isClicked: boolean) => void }> = ({

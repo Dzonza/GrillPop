@@ -44,6 +44,18 @@
     transform: rotate(var(--rotation, 0deg));
     transition: 0.3s;
   }
+  @media screen and (max-width: 1024px) {
+    .h1-before {
+      content: '"Where Every Bite Hits Right — Packed with Flavor, Served with Speed."';
+      padding: 80px;
+    }
+  }
+  @media screen and (max-width: 640px) {
+    .h1-before {
+      content: '"Where Every Bite Hits Right — Packed with Flavor, Served with Speed."';
+      padding: 80px 20px;
+    }
+  }
   .testimonial-card-shadow {
     box-shadow: rgba(240, 46, 170, 0.4) 5px 5px,
       rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px,

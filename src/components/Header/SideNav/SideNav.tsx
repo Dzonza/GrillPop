@@ -1,7 +1,7 @@
 import { faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext, useState, type FC } from 'react';
-import { FoodList } from '../../store/foodList-context';
+import { FoodList } from '../../../store/foodList-context';
 import OrderList from './OrderList';
 import SubmitOrder from './SubmitOrder';
 import sideNavBg from '/images/side-nav-bg.jpg';
@@ -16,7 +16,7 @@ const SideNav: FC<SideNavProps> = ({ isActiveNav, setIsActiveNav }) => {
   const { foodItems } = useContext(FoodList);
   return (
     <section
-      className={`fixed top-0 right-0 h-full bg-white w-96 p-5 transform transition-transform ease-in-out duration-500 flex flex-col z-20 overflow-hidden  ${
+      className={`fixed top-0 right-0 h-full bg-white w-full md:w-96 p-5 transform transition-transform ease-in-out duration-300 flex flex-col z-20 overflow-hidden  ${
         isActiveNav ? ' translate-x-0' : 'translate-x-full'
       }`}
     >

@@ -5,11 +5,11 @@ import burgerImg from '/images/burger-about.png';
 const About = () => {
   const [hoveredBtn, setHoveredBtn] = useState<boolean>(false);
   return (
-    <section className=" px-20 py-32 flex items-center justify-center gap-20 ">
-      <div className="flex flex-col w-2/5 items-start gap-16">
-        <p className="text-xl/8">
+    <section className=" px-5 sm:px-20 py-20 sm:py-32 flex flex-col-reverse lg:flex-row items-center justify-center gap-16 md:gap-20 ">
+      <div className="flex flex-col w-full lg:w-2/5 items-center md:items-start  gap-16">
+        <p className="text-base/7 md:text-xl/8 text-justify  md:text-start">
           At{' '}
-          <span className="text-orange-700  text-4xl font-luckiest">
+          <span className="text-orange-700   text-4xl font-luckiest">
             GRILLPOP
           </span>
           , we believe great taste should be fast, fresh, and affordable.
@@ -23,13 +23,14 @@ const About = () => {
           — it's food done right.
         </p>
         <Link
-          to={''}
+          to="/About"
           onMouseEnter={() => setHoveredBtn(true)}
           onMouseLeave={() => setHoveredBtn(false)}
+          className="self-center lg:self-start"
         >
-          <div className="relative">
+          <div className="relative ">
             <p
-              className={`py-3 px-6  rounded-md duration-300  cursor-pointer font-luckiest ${
+              className={`py-3 px-6   rounded-md duration-300  cursor-pointer font-luckiest ${
                 hoveredBtn
                   ? 'bg-transparent translate-y-8 text-orange-600'
                   : 'bg-orange-600'
@@ -46,7 +47,7 @@ const About = () => {
           </div>
         </Link>
       </div>
-      <div className="relative w-[55%]">
+      <div className="relative w-full md:w-[75%] lg:w-[55%]">
         <img src={burgerImg} alt="hamburger image" />
         <div
           className={`top-0  w-full h-full absolute -z-20 bg-[url('images/about-image-2.jpg')] bg-cover brightness-[50%] `}

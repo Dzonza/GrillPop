@@ -5,7 +5,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useContext, useState, type FC } from 'react';
-import { FoodList } from '../../store/foodList-context';
+import { FoodList } from '../../../store/foodList-context';
 interface Item {
   name: string;
   price: number;

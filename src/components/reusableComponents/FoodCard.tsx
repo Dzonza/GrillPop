@@ -29,7 +29,7 @@ const FoodCard: FC<Card> = ({ id, name, price, description, image, offer }) => {
 
   return (
     <article
-      className=" flex flex-col w-96 gap-5 h-full  justify-between relative"
+      className=" flex flex-col w-full sm:w-96 gap-5 h-full  justify-between relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       ref={ref}
@@ -43,11 +43,13 @@ const FoodCard: FC<Card> = ({ id, name, price, description, image, offer }) => {
           className="absolute top-2 left-0 w-24 -translate-x-3 z-[5]"
         />
       )}
-      <div className="overflow-hidden w-full h-96 rounded-lg ">
+      <div className="overflow-hidden w-full h-auto sm:h-96 rounded-lg ">
         <img
           src={image}
           alt={name}
-          className={` duration-500 w-full h-96  ${isHovered && 'scale-110'} `}
+          className={` duration-500 w-full h-auto sm:h-96  ${
+            isHovered && 'scale-110'
+          } `}
         />
       </div>
 

@@ -52,15 +52,15 @@ const PromoFoodItems: FC = () => {
   }
 
   return (
-    <section className="px-20 py-32 flex flex-col items-center gap-20">
-      <div className="relative mb-32">
-        <h2 className="uppercase font-luckiest text-8xl font-medium text-orange-600 ">
+    <section className="px-5 sm:px-20 pt-32 pb-20 md:pb-32 flex flex-col items-center gap-16 md:gap-20 overflow-hidden  sm:overflow-visible">
+      <div className="relative mb-20 md:mb-32 ">
+        <h2 className="text-center md:text-start uppercase font-luckiest text-7xl md:text-8xl font-medium text-orange-600 ">
           Blast Offers
         </h2>
         <img
           src={blastImg}
           alt="comic blast image"
-          className="absolute top-[50%] left-0 w-[200%] -translate-x-[30%] -translate-y-1/2 -z-10"
+          className="absolute top-[50%] left-0  w-full scale-125 sm:scale-100 sm:w-[200%] sm:-translate-x-[30%] -translate-y-1/2 -z-10"
         />
       </div>
       <section className="flex flex-wrap gap-20 items-center justify-center">

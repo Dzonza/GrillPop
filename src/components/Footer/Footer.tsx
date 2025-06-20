@@ -13,14 +13,14 @@ const Footer = () => {
       <img
         src={footerBurger}
         alt="burger"
-        className="absolute  w-[30%] top-0 left-0 -translate-y-20"
+        className="hidden md:block absolute  w-96 top-0 left-0 -translate-x-20 -translate-y-14 -z-10"
       />
       <img
         src={footerRamen}
         alt="burger"
-        className="absolute  w-[30%] top-0 -right-28 -rotate-[30deg]"
+        className=" absolute -z-10  opacity-50 sm:opacity-100 sm:w-96  sm:top-0 -right-28 sm:-rotate-[30deg]"
       />
-      <nav className="flex gap-16 text-xl font-semibold tracking-[3px] ">
+      <nav className="flex flex-col sm:flex-row gap-10 items-center sm:gap-16 text-xl font-semibold tracking-[3px] ">
         <Link to="/Menu" className="duration-300 hover:text-orange-600">
           Menu
         </Link>

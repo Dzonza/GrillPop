@@ -1,7 +1,7 @@
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { useCallback, useContext, useState, type FC } from 'react';
-import { FoodList } from '../../store/foodList-context';
-import Input from '../reusableComponents/Input';
+import { FoodList } from '../../../store/foodList-context';
+import Input from '../../reusableComponents/Input';
 interface FormDetails {
   name: string;
   surname: string;
