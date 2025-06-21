@@ -27,8 +27,8 @@ const FoodHero = () => {
   }, [inView]);
 
   return (
-    <section className="flex gap-20 px-20 pt-40">
-      <div className="w-1/2 flex flex-col justify-center items-center">
+    <section className="flex gap-20 px-5 sm:px-20 pt-32 md:pt-40">
+      <div className="hidden  w-1/2 lg:flex flex-col justify-center items-center">
         <div className="relative w-3/5">
           <img
             src={smack}
@@ -43,7 +43,10 @@ const FoodHero = () => {
           />
         </div>
       </div>
-      <div className="grid grid-cols-2 grid-rows-3 gap-5 w-1/2" ref={ref}>
+      <div
+        className="grid grid-cols-2 grid-rows-3 gap-5 w-full lg:w-1/2"
+        ref={ref}
+      >
         <video
           loop={inView}
           muted
@@ -53,7 +56,7 @@ const FoodHero = () => {
           <source src={pizza} type="video/mp4" />
           <p>Your browser does not support the video tag.</p>
         </video>
-        <div className="bg-orange-600 w-28 h-28 justify-self-center self-center"></div>
+        <div className=" bg-orange-600 w-14 h-14 sm:w-28 sm:h-28 justify-self-center self-center"></div>
         <video
           loop={inView}
           muted
@@ -63,7 +66,7 @@ const FoodHero = () => {
           <source src={burger} type="video/mp4" />
           <p>Your browser does not support the video tag.</p>
         </video>
-        <div className="bg-blue-500 w-28 h-28 rounded-[50%] justify-self-center self-center"></div>
+        <div className=" bg-blue-500 w-14 h-14 sm:w-28 sm:h-28 rounded-[50%] justify-self-center self-center"></div>
         <video
           loop={inView}
           muted
@@ -74,7 +77,7 @@ const FoodHero = () => {
           <p>Your browser does not support the video tag.</p>
         </video>
         <div
-          className="bg-purple-600 w-28 h-28 justify-self-center self-center"
+          className=" bg-purple-600 w-14 h-14 sm:w-28 sm:h-28 justify-self-center self-center"
           style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}
         ></div>
       </div>

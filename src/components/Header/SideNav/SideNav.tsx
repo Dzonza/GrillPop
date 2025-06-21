@@ -4,7 +4,8 @@ import { useContext, useState, type FC } from 'react';
 import { FoodList } from '../../../store/foodList-context';
 import OrderList from './OrderList';
 import SubmitOrder from './SubmitOrder';
-import sideNavBg from '/images/side-nav-bg.jpg';
+import sideNavBg from '/images/sidenav-bg.png';
+
 interface SideNavProps {
   isActiveNav: boolean;
   setIsActiveNav: (isActive: boolean) => void;
@@ -22,7 +23,7 @@ const SideNav: FC<SideNavProps> = ({ isActiveNav, setIsActiveNav }) => {
     >
       <FontAwesomeIcon
         icon={faSquareXmark}
-        className="w-10 h-10 cursor-pointer duration-500 hover:rotate-180 sticky top-0 self-end text-orange-600"
+        className="w-10 h-10 cursor-pointer duration-500 hover:rotate-180 sticky top-0 self-end text-red-600"
         onClick={() => setIsActiveNav(false)}
       />
       {foodItems.length > 0 && (

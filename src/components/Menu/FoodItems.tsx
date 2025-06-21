@@ -78,7 +78,9 @@ const FoodItems: FC = () => {
 
   return (
     <FoodMenuButtons handleFilteringData={handleFilteringData}>
-      <section className={`flex  flex-wrap px-20 justify-center gap-20  `}>
+      <section
+        className={`flex  flex-wrap px-5 sm:px-20 justify-center gap-20  `}
+      >
         {foodData.length > 0 ? (
           foodData.map((food) => (
             <FoodCard

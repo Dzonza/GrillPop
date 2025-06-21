@@ -7,11 +7,11 @@ const Contact = () => {
   return (
     <section className="max-w-[1600px] mx-auto">
       <Header />
-      <div className="pt-20 p-40 mt-20">
+      <div className="pt-32 md:pt-40 px-5 sm:px-20 md:px-40 pb-32 md:pb-40">
         <h2 className="font-luckiest text-center text-7xl font-light text-orange-600">
           Contact Us
         </h2>
-        <div className="flex flex-col items-center justify-center text-center gap-3 mx-auto w-3/4 my-10 relative">
+        <div className="flex flex-col items-center justify-center text-justify sm:text-center gap-3 mx-auto w-full lg:w-3/4 my-10 relative">
           <p className="text-xl">
             We’re always hungry for feedback — just like you are for great food!
             Whether you have a complaint, a suggestion for improvement, or just
@@ -29,10 +29,10 @@ const Contact = () => {
           <img
             src={sushiSamurai}
             alt="animated sushi samurai"
-            className="absolute left-0 top-0 -translate-y-full w-36"
+            className="hidden lg:block absolute left-0 top-0 -translate-y-full w-36"
           />
         </div>
-        <div className="flex gap-20">
+        <div className="flex flex-col-reverse lg:flex-row gap-10 sm:gap-16 md:gap-20">
           <ContactForm />
           <ContactMap />
         </div>

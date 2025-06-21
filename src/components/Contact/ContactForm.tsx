@@ -98,9 +98,9 @@ const ContactForm: FC = () => {
   }
 
   return (
-    <section className="w-1/2">
+    <section className="w-full lg:w-1/2">
       <div>
-        <div className="flex gap-10">
+        <div className="flex flex-col sm:flex-row sm:gap-10">
           <Input
             id="name"
             placeholder="Enter your name"

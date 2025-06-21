@@ -2,7 +2,7 @@ import promoCardText from '../../utils/promoCards';
 
 const PromoCards = () => {
   return (
-    <section className="flex flex-wrap px-20 py-52 justify-center content-center gap-10 ">
+    <section className="flex flex-wrap px-5 sm:px-20 py-32 md:py-52 justify-center content-center gap-10 ">
       {promoCardText.map((card) => {
         return (
           <article
