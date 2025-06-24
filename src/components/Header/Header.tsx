@@ -1,5 +1,6 @@
 import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'motion/react';
 import { useContext, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
@@ -40,9 +41,18 @@ const Header = () => {
             className="w-full h-full hover:text-orange-600 duration-300"
           />
           {foodItems.length > 0 && (
-            <div className="absolute bg-red-800 text-white top-0 right-0 translate-x-1/2 text-sm sm:text-base -translate-y-1/2 px-1">
+            <motion.div
+              key={foodItems.length}
+              className="absolute  text-white top-0 right-0  text-sm sm:text-base  px-1"
+              initial={{ x: '50%', y: '-50%' }}
+              animate={{
+                scale: [1, 1.2, 1],
+                backgroundColor: ['#991b1b', '#dd6b20', '#991b1b'],
+              }}
+              transition={{ duration: 0.5, type: 'tween' }}
+            >
               {foodItems.length}
-            </div>
+            </motion.div>
           )}
         </div>
       </div>

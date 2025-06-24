@@ -1,11 +1,11 @@
 import { faSquareXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'motion/react';
 import { useContext, useState, type FC } from 'react';
 import { FoodList } from '../../../store/foodList-context';
 import OrderList from './OrderList';
 import SubmitOrder from './SubmitOrder';
 import sideNavBg from '/images/sidenav-bg.png';
-
 interface SideNavProps {
   isActiveNav: boolean;
   setIsActiveNav: (isActive: boolean) => void;
@@ -21,11 +21,26 @@ const SideNav: FC<SideNavProps> = ({ isActiveNav, setIsActiveNav }) => {
         isActiveNav ? ' translate-x-0' : 'translate-x-full'
       }`}
     >
-      <FontAwesomeIcon
-        icon={faSquareXmark}
-        className="w-10 h-10 cursor-pointer duration-500 hover:rotate-180 sticky top-0 self-end text-red-600"
+      <motion.div
+        className=" w-10 h-10 cursor-pointer  sticky top-0 self-end text-red-600 "
+        initial={{
+          opacity: 0.8,
+          transition: { duration: 1, type: 'spring', stiffness: 100 },
+        }}
+        whileHover={{
+          opacity: 1,
+          rotate: 180,
+          transition: {
+            duration: 0.3,
+            type: 'spring',
+            stiffness: 60,
+            damping: 5,
+          },
+        }}
         onClick={() => setIsActiveNav(false)}
-      />
+      >
+        <FontAwesomeIcon icon={faSquareXmark} className="w-full h-full " />
+      </motion.div>
       {foodItems.length > 0 && (
         <div className="flex justify-center items-center ">
           <div
