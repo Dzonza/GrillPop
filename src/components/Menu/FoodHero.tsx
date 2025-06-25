@@ -1,8 +1,11 @@
-import { useEffect, useRef } from 'react';
+import { motion, useScroll, useSpring, useTransform } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
-import pow from '/images/pow.png';
-import retroBurger from '/images/retro-burger.jpg';
-import smack from '/images/smack.png';
+import burger3d from '/images/3d-burger.png';
+import donut3d from '/images/3d-donut.png';
+import cloud1 from '/images/cloud-1.png';
+import cloud2 from '/images/cloud-2.png';
+import cloud3 from '/images/cloud-3.png';
 import burger from '/videos/burger.mp4';
 import hotdog from '/videos/hotdog.mp4';
 import pizza from '/videos/pizza.mp4';
@@ -10,10 +13,11 @@ const FoodHero = () => {
   const { ref, inView } = useInView({
     threshold: 0,
   });
+  const [contentHeight, setContentHeight] = useState<number>(0);
   const burgerRef = useRef<HTMLVideoElement>(null);
   const pizzaRef = useRef<HTMLVideoElement>(null);
   const hotdogRef = useRef<HTMLVideoElement>(null);
-
+  const heroContainerRef = useRef<HTMLElement>(null);
   useEffect(() => {
     if (inView && burgerRef && pizzaRef && hotdogRef) {
       burgerRef.current!.play();
@@ -26,22 +30,99 @@ const FoodHero = () => {
     }
   }, [inView]);
 
+  useEffect(() => {
+    if (!heroContainerRef.current) {
+      return;
+    }
+    const el = heroContainerRef.current.parentElement;
+
+    if (!el) return;
+
+    const update = () => setContentHeight(el.getBoundingClientRect().height);
+    setTimeout(() => {
+      update();
+    }, 300);
+
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [contentHeight]);
+
+  const { scrollY } = useScroll();
+  const rawRotateBurger = useTransform(
+    scrollY,
+    [0, contentHeight],
+    ['0deg', '360deg']
+  );
+  const rawOpacityBurger = useTransform(scrollY, [0, 1000], [1, 0.4]);
+  const rotateBurger = useSpring(rawRotateBurger, {
+    stiffness: 300,
+    damping: 20,
+    mass: 0.7,
+  });
+  const opacityBurger = useSpring(rawOpacityBurger, {
+    stiffness: 100,
+    damping: 20,
+    mass: 0.7,
+  });
+
+  const rawRotateDonut = useTransform(
+    scrollY,
+    [0, contentHeight],
+    ['0deg', '-360deg']
+  );
+  const rawOpacityDonut = useTransform(scrollY, [0, 1500], [0, 0.4]);
+  const rotateDonut = useSpring(rawRotateDonut, {
+    stiffness: 300,
+    damping: 20,
+    mass: 0.7,
+  });
+  const opacityDonut = useSpring(rawOpacityDonut, {
+    stiffness: 100,
+    damping: 20,
+    mass: 0.7,
+  });
+
+  const rawScale = useTransform(scrollY, [0, 1000], [1, 0]);
+  const scale = useSpring(rawScale, {
+    stiffness: 300,
+    damping: 20,
+    mass: 0.7,
+  });
   return (
-    <section className="flex gap-20 px-5 sm:px-20 pt-32 md:pt-40">
-      <div className="hidden  w-1/2 lg:flex flex-col justify-center items-center">
-        <div className="relative w-3/5">
-          <img
-            src={smack}
-            alt="smack comic image"
-            className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2  w-3/5"
-          />
-          <img src={retroBurger} alt="" className="rounded-xl " />
-          <img
-            src={pow}
-            alt="Pop image"
-            className="w-3/4 absolute top-0 left-0 -translate-x-[55%] -translate-y-[55%]"
-          />
-        </div>
+    <section
+      className="flex gap-20 px-5 sm:px-20 pt-32 md:pt-40"
+      ref={heroContainerRef}
+    >
+      <div className="hidden w-1/2 lg:flex flex-col justify-center items-center relative">
+        <motion.div
+          style={{ scale: scale }}
+          className="w-[450px] h-[450px] bg-blue-500 rounded-[50%] -z-10"
+        ></motion.div>
+        <motion.img
+          style={{ scale: scale }}
+          className="absolute top-14 left-0 w-[250px]"
+          src={cloud1}
+          alt="image of a cloud"
+        />
+        <motion.img
+          style={{ scale: scale }}
+          className="absolute top-1/2 right-0 w-[200px] -z-10"
+          src={cloud2}
+          alt="image of a cloud"
+        />
+        <motion.img
+          style={{ scale: scale }}
+          className="absolute bottom-10 left-10 w-[350px]"
+          src={cloud3}
+          alt="image of a cloud"
+        />
+        <motion.img
+          initial={{ rotate: 0 }}
+          style={{ rotate: rotateBurger, opacity: opacityBurger }}
+          src={burger3d}
+          alt="burger"
+          className="w-[500px] -z-10 fixed"
+        />
       </div>
       <div
         className="grid grid-cols-2 grid-rows-3 gap-5 w-full lg:w-1/2"
@@ -80,6 +161,12 @@ const FoodHero = () => {
           className=" bg-purple-600 w-14 h-14 sm:w-28 sm:h-28 justify-self-center self-center"
           style={{ clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)' }}
         ></div>
+        <motion.img
+          style={{ opacity: opacityDonut, rotate: rotateDonut, x: 200 }}
+          src={donut3d}
+          alt="donut"
+          className="w-[300px] sm:w-[400px] -z-10 fixed top-20 "
+        />
       </div>
     </section>
   );

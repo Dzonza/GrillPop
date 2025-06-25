@@ -1,6 +1,6 @@
+import { motion } from 'framer-motion';
 import type { FC } from 'react';
 import useResize from '../../customHooks/useResize';
-
 interface AboutCard {
   id: number;
   title: string;
@@ -17,13 +17,45 @@ const AboutContentCard: FC<AboutCard> = ({ id, title, description, image }) => {
       } ${width < 768 ? 'flex-col-reverse' : ''}`}
     >
       <div className="w-full md:w-1/2 flex flex-col gap-5">
-        <h3 className="font-luckiest text-orange-600 text-3xl font-light">
+        <motion.h3
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ amount: 0.5, once: true }}
+          transition={{
+            duration: 0.5,
+            ease: 'easeInOut',
+          }}
+          className="font-luckiest text-orange-600 text-3xl font-light"
+        >
           {title}
-        </h3>
-        <p>{description}</p>
+        </motion.h3>
+        <motion.p
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ amount: 0.5, once: true }}
+          transition={{
+            duration: 0.5,
+            ease: 'easeInOut',
+            delay: 0.2,
+          }}
+        >
+          {description}
+        </motion.p>
       </div>
       <div className="w-full md:w-1/2">
-        <img src={image} alt={title} className="w-full rounded-md" />
+        <motion.img
+          initial={{ boxShadow: 'none' }}
+          whileInView={{ boxShadow: 'rgba(240, 46, 170, 0.4) 15px 15px' }}
+          src={image}
+          alt={title}
+          transition={{
+            type: 'spring',
+            stiffness: 50,
+            damping: 6,
+          }}
+          className="w-full rounded-md"
+          viewport={{ once: true, amount: 1 }}
+        />
       </div>
     </article>
   );

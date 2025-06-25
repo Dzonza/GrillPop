@@ -9,7 +9,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <section className="flex flex-col items-center gap-10 pt-16 border-t-2 border-orange-600 relative overflow-hidden">
+    <section className=" flex flex-col items-center gap-10 pt-16 border-t-2 border-orange-600 relative overflow-hidden">
       <img
         src={footerBurger}
         alt="burger"
