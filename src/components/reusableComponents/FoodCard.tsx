@@ -1,4 +1,5 @@
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { motion } from 'framer-motion';
 import { useCallback, useContext, useState, type FC } from 'react';
 import { useInView } from 'react-intersection-observer';
 import { FoodList } from '../../store/foodList-context';
@@ -28,8 +29,12 @@ const FoodCard: FC<Card> = ({ id, name, price, description, image, offer }) => {
   }, [foodItems, addItem, id, name, price, image]);
 
   return (
-    <article
-      className=" flex flex-col w-full sm:w-96 gap-5 h-full  justify-between relative"
+    <motion.article
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 10 }}
+      viewport={{ once: true, amount: 0.5 }}
+      className=" flex flex-col w-full sm:w-96 gap-5 h-full  justify-between relative "
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       ref={ref}
@@ -66,7 +71,7 @@ const FoodCard: FC<Card> = ({ id, name, price, description, image, offer }) => {
           Add to cart
         </button>
       </div>
-    </article>
+    </motion.article>
   );
 };
 

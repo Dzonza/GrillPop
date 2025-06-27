@@ -11,15 +11,23 @@ const About = () => {
     target: containerRef,
     offset: ['start start', 'end end'],
   });
-
-  // Section 2 comes up from 100px below to 0px
+  const smallScreenMoveUp = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ['450px', '0px']
+  );
   const translateY = useTransform(scrollYProgress, [0, 1], ['1000px', '0px']);
 
   return (
-    <section className="max-w-[1600px] mx-auto" ref={containerRef}>
+    <section className="max-w-[1600px] mx-auto">
       <Header />
-      <AboutHero />
-      <AboutContent moveUp={translateY} />
+      <section ref={containerRef} className="overflow-hidden">
+        <AboutHero />
+        <AboutContent
+          moveUp={translateY}
+          smallScreenMoveUp={smallScreenMoveUp}
+        />
+      </section>
       <Footer />
     </section>
   );

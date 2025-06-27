@@ -90,29 +90,29 @@ const FoodHero = () => {
   });
   return (
     <section
-      className="flex gap-20 px-5 sm:px-20 pt-32 md:pt-40"
+      className="flex flex-col lg:flex-row gap-20 px-5 sm:px-20 pt-32 md:pt-40"
       ref={heroContainerRef}
     >
-      <div className="hidden w-1/2 lg:flex flex-col justify-center items-center relative">
+      <div className=" w-full lg:w-1/2 flex flex-col justify-center items-center relative">
         <motion.div
           style={{ scale: scale }}
-          className="w-[450px] h-[450px] bg-blue-500 rounded-[50%] -z-10"
+          className=" w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] bg-blue-500 rounded-[50%] -z-10"
         ></motion.div>
         <motion.img
           style={{ scale: scale }}
-          className="absolute top-14 left-0 w-[250px]"
+          className="absolute top-0 sm:top-14 left-0 w-[150px] sm:w-[200px] md:w-[250px]"
           src={cloud1}
           alt="image of a cloud"
         />
         <motion.img
           style={{ scale: scale }}
-          className="absolute top-1/2 right-0 w-[200px] -z-10"
+          className="absolute top-1/2 right-0 w-[100px] sm:w-[150px] md:w-[200px] -z-10"
           src={cloud2}
           alt="image of a cloud"
         />
         <motion.img
           style={{ scale: scale }}
-          className="absolute bottom-10 left-10 w-[350px]"
+          className="absolute bottom-0 md:bottom-10 left-0 sm:left-10 w-[200px] sm:w-[300px] md:w-[350px]"
           src={cloud3}
           alt="image of a cloud"
         />
@@ -165,7 +165,7 @@ const FoodHero = () => {
           style={{ opacity: opacityDonut, rotate: rotateDonut, x: 200 }}
           src={donut3d}
           alt="donut"
-          className="w-[300px] sm:w-[400px] -z-10 fixed top-20 "
+          className="hidden lg:block w-[300px] sm:w-[400px] -z-10 fixed top-20 "
         />
       </div>
     </section>

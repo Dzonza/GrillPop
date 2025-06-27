@@ -69,37 +69,53 @@ const SubmitOrder: FC<SubmitOrderProps> = ({
     },
     []
   );
-  const handleSubmitOrder = useCallback(() => {
-    async function submitOrder() {
-      try {
-        const response = await fetch('http://localhost:3000/orders', {
-          method: 'POST',
-          body: JSON.stringify({
-            orders: foodItems,
-            customerDetails: formData,
-          }),
-        });
-        if (!response.ok) {
-          throw new Error(`Somethiwn went wrong: ${response.ok}`);
-        }
-        setFormData({
-          name: '',
-          surname: '',
-          address: '',
-          comment: '',
-        });
+  // const handleSubmitOrder = useCallback(() => {
+  //   async function submitOrder() {
+  //     try {
+  //       const response = await fetch('http://localhost:3000/orders', {
+  //         method: 'POST',
+  //         body: JSON.stringify({
+  //           orders: foodItems,
+  //           customerDetails: formData,
+  //         }),
+  //       });
+  //       if (!response.ok) {
+  //         throw new Error(`Somethiwn went wrong: ${response.ok}`);
+  //       }
+  //       setFormData({
+  //         name: '',
+  //         surname: '',
+  //         address: '',
+  //         comment: '',
+  //       });
 
-        setErrorSendingData('');
-        setIsDataSent(true);
-      } catch (err) {
-        setErrorSendingData('Something went wrong, please try again.');
-        console.error(err);
-      }
-    }
+  //       setErrorSendingData('');
+  //       setIsDataSent(true);
+  //     } catch (err) {
+  //       setErrorSendingData('Something went wrong, please try again.');
+  //       console.error(err);
+  //     }
+  //   }
+  //   if (formData.address && formData.name && formData.surname) {
+  //     submitOrder();
+  //   }
+  // }, [foodItems, formData, setIsDataSent]);
+
+  const handleSubmitOrder = useCallback(() => {
     if (formData.address && formData.name && formData.surname) {
-      submitOrder();
+      setFormData({
+        name: '',
+        surname: '',
+        address: '',
+        comment: '',
+      });
+
+      setErrorSendingData('');
+      setIsDataSent(true);
+    } else {
+      setErrorSendingData('Something went wrong, please try again.');
     }
-  }, [foodItems, formData, setIsDataSent]);
+  }, [formData, setIsDataSent]);
 
   if (errorSendingData) {
     return <p>{errorSendingData}</p>;

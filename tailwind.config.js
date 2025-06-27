@@ -21,9 +21,31 @@ export default {
             transform: 'rotate(360deg)',
           },
         },
+        shadow: {
+          '0%': {
+            boxShadow: 'rgba(240, 46, 170, 0.4) 5px 5px',
+          },
+          '25%': {
+            boxShadow:
+              'rgba(240, 46, 170, 0.4) 5px 5px,rgba(240, 46, 170, 0.3) 10px 10px',
+          },
+          '50%': {
+            boxShadow:
+              'rgba(240, 46, 170, 0.4) 5px 5px,rgba(240, 46, 170, 0.3) 10px 10px,rgba(240, 46, 170, 0.2) 15px 15px',
+          },
+          '75%': {
+            boxShadow:
+              'rgba(240, 46, 170, 0.4) 5px 5px,rgba(240, 46, 170, 0.3) 10px 10px,rgba(240, 46, 170, 0.2) 15px 15px,rgba(240, 46, 170, 0.1) 20px 20px',
+          },
+          '100%': {
+            boxShadow:
+              'rgba(240, 46, 170, 0.4) 5px 5px,rgba(240, 46, 170, 0.3) 10px 10px,rgba(240, 46, 170, 0.2) 15px 15px,rgba(240, 46, 170, 0.1) 20px 20px,rgba(240, 46, 170, 0.05) 25px 25px',
+          },
+        },
       },
       animation: {
         rotate: 'rotate 9s linear infinite',
+        shadow: 'shadow 0.5s ease forwards 0.8s',
       },
     },
   },

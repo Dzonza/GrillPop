@@ -1,64 +1,94 @@
 import { useCallback, useEffect, useState, type FC } from 'react';
+import food from '../../utils/food';
 import FoodCard from '../reusableComponents/FoodCard';
 import FoodMenuButtons from './FoodMenuButtons';
 import spinner from '/images/spinner.svg';
 interface Food {
   id: string;
   name: string;
-  price: number;
+  price: string;
   description: string;
   image: string;
   blastOffer: boolean;
+  course: string;
 }
 
 const FoodItems: FC = () => {
   const [foodData, setFoodData] = useState<Food[]>([]);
+  const [filteredData, setFilteredData] = useState<Food[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [loader, setLoader] = useState<boolean>(false);
 
+  // useEffect(() => {
+  //   async function getFoodItems() {
+  //     try {
+  //       setLoader(true);
+  //       setErrorMessage('');
+  //       const response = await fetch('http://localhost:3000/food');
+  //       if (!response.ok) {
+  //         throw new Error(`HTTP error! status: ${response.status}`);
+  //       }
+  //       const result = await response.json();
+  //       setFoodData(result);
+  //     } catch (err) {
+  //       setErrorMessage(
+  //         'Whoops, something went wrong, please try again later.'
+  //       );
+  //       console.error(err);
+  //     } finally {
+  //       setLoader(false);
+  //     }
+  //   }
+  //   getFoodItems();
+  // }, []);
+
   useEffect(() => {
-    async function getFoodItems() {
-      try {
-        setLoader(true);
-        setErrorMessage('');
-        const response = await fetch('http://localhost:3000/food');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const result = await response.json();
-        setFoodData(result);
-      } catch (err) {
+    setLoader(true);
+    setErrorMessage('');
+    if (food) {
+      setFoodData(food);
+    } else {
+      setErrorMessage('Whoops, something went wrong, please try again later.');
+    }
+    setLoader(false);
+  }, []);
+
+  // const handleFilteringData = useCallback(async (course: string) => {
+  //   try {
+  //     setLoader(true);
+  //     setErrorMessage('');
+  //     const response = await fetch(
+  //       `http://localhost:3000/food?course=${course}`
+  //     );
+  //     if (!response.ok) {
+  //       throw new Error(`HTTP error! status: ${response.status}`);
+  //     }
+  //     const result = await response.json();
+  //     setFoodData(result);
+  //   } catch (err) {
+  //     setErrorMessage('Whoops, something went wrong, please try again later.');
+  //     console.error(err);
+  //   } finally {
+  //     setLoader(false);
+  //   }
+  // }, []);
+
+  const handleFilteringData = useCallback(
+    (course: string) => {
+      setLoader(true);
+      setErrorMessage('');
+      const newFoodData = foodData.filter((card) => card.course === course);
+      if (newFoodData) {
+        setFilteredData(newFoodData);
+      } else {
         setErrorMessage(
           'Whoops, something went wrong, please try again later.'
         );
-        console.error(err);
-      } finally {
-        setLoader(false);
       }
-    }
-    getFoodItems();
-  }, []);
-
-  const handleFilteringData = useCallback(async (course: string) => {
-    try {
-      setLoader(true);
-      setErrorMessage('');
-      const response = await fetch(
-        `http://localhost:3000/food?course=${course}`
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json();
-      setFoodData(result);
-    } catch (err) {
-      setErrorMessage('Whoops, something went wrong, please try again later.');
-      console.error(err);
-    } finally {
       setLoader(false);
-    }
-  }, []);
-
+    },
+    [foodData]
+  );
   if (loader) {
     console.log(loader);
     return (
@@ -81,23 +111,29 @@ const FoodItems: FC = () => {
       <section
         className={`flex  flex-wrap px-5 sm:px-20 justify-center gap-20  `}
       >
-        {foodData.length > 0 ? (
-          foodData.map((food) => (
-            <FoodCard
-              key={food.id}
-              id={food.id}
-              name={food.name}
-              price={food.price}
-              description={food.description}
-              image={food.image}
-              offer={food.blastOffer}
-            />
-          ))
-        ) : (
-          <p className="text-center text-white text-2xl">
-            No food items found...
-          </p>
-        )}
+        {filteredData.length === 0
+          ? foodData.map((food) => (
+              <FoodCard
+                key={food.id}
+                id={food.id}
+                name={food.name}
+                price={+food.price}
+                description={food.description}
+                image={food.image}
+                offer={food.blastOffer}
+              />
+            ))
+          : filteredData.map((food) => (
+              <FoodCard
+                key={food.id}
+                id={food.id}
+                name={food.name}
+                price={+food.price}
+                description={food.description}
+                image={food.image}
+                offer={food.blastOffer}
+              />
+            ))}
       </section>
     </FoodMenuButtons>
   );

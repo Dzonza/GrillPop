@@ -1,5 +1,6 @@
 import { useEffect, useState, type FC } from 'react';
 import { Link } from 'react-router-dom';
+import food from '../../utils/food';
 import FoodCard from '../reusableComponents/FoodCard';
 import blastImg from '/images/blast.png';
 import spinner from '/images/spinner.svg';
@@ -17,30 +18,41 @@ const PromoFoodItems: FC = () => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [loader, setLoader] = useState<boolean>(false);
   const [hoveredMenuBtn, setHoveredMenuBtn] = useState<boolean>(false);
-  useEffect(() => {
-    async function getData() {
-      try {
-        setLoader(true);
-        setErrorMessage('');
-        const response = await fetch(
-          `http://localhost:3000/food?blastOffer=true`
-        );
-        if (!response.ok) {
-          throw new Error(
-            `Cant find item with a chosen id, ${response.status}`
-          );
-        }
-        const data = await response.json();
-        setDeals(data);
-      } catch (err) {
-        console.error(err);
-        setErrorMessage('Failed to fetch data... Please try again later.');
-      } finally {
-        setLoader(false);
-      }
-    }
+  // useEffect(() => {
+  //   async function getData() {
+  //     try {
+  //       setLoader(true);
+  //       setErrorMessage('');
+  //       const response = await fetch(
+  //         `http://localhost:3000/food?blastOffer=true`
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error(
+  //           `Cant find item with a chosen id, ${response.status}`
+  //         );
+  //       }
+  //       const data = await response.json();
+  //       setDeals(data);
+  //     } catch (err) {
+  //       console.error(err);
+  //       setErrorMessage('Failed to fetch data... Please try again later.');
+  //     } finally {
+  //       setLoader(false);
+  //     }
+  //   }
 
-    getData();
+  //   getData();
+  // }, []);
+
+  useEffect(() => {
+    setLoader(true);
+    setErrorMessage('');
+    if (food) {
+      setDeals(food);
+    } else {
+      setErrorMessage('Failed to fetch data... Please try again later.');
+    }
+    setLoader(false);
   }, []);
 
   if (errorMessage) {
@@ -48,7 +60,7 @@ const PromoFoodItems: FC = () => {
   }
 
   if (loader) {
-    return <img src={spinner} alt="loading spinner" className="w-32 " />;
+    return <img src={spinner} alt="loading spinner" className="w-32" />;
   }
 
   return (
@@ -65,16 +77,18 @@ const PromoFoodItems: FC = () => {
       </div>
       <section className="flex flex-wrap gap-20 items-center justify-center">
         {deals.map((item) => {
-          return (
-            <FoodCard
-              id={item.id}
-              name={item.name}
-              price={+item.price}
-              description={item.description}
-              image={item.image}
-              offer={item.blastOffer}
-            />
-          );
+          if (item.blastOffer) {
+            return (
+              <FoodCard
+                id={item.id}
+                name={item.name}
+                price={+item.price}
+                description={item.description}
+                image={item.image}
+                offer={item.blastOffer}
+              />
+            );
+          }
         })}
       </section>
       <Link
