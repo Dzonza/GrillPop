@@ -17,14 +17,14 @@ const Header = () => {
 
   useEffect(() => {
     const bodyEl = document.querySelector('body');
-    if (bodyEl) {
+    if (bodyEl && width < 768) {
       if (isActiveNav || isActiveBurgerNav) {
         bodyEl.style.overflow = 'hidden';
       } else {
         bodyEl.style.overflow = 'auto';
       }
     }
-  }, [isActiveBurgerNav, isActiveNav]);
+  }, [isActiveBurgerNav, isActiveNav, width]);
 
   return (
     <header className="px-5  sm:px-10 h-28 flex justify-between items-center top-0 fixed w-full bg-black z-10 max-w-[1600px] ">
@@ -34,7 +34,7 @@ const Header = () => {
         </h1>
       </Link>
 
-      {width > 768 && <NavLinks />}
+      {width >= 768 && <NavLinks />}
 
       <div className="flex items-center justify-center h-14 gap-5 ">
         {width < 768 && (

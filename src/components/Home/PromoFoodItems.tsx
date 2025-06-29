@@ -105,7 +105,7 @@ const PromoFoodItems: FC = () => {
           Menu
         </p>
         <p
-          className={`absolute font-luckiest text-orange-600 top-1/2 left-1/2 text-9xl -translate-x-1/2 -translate-y-1/2 duration-500   ${
+          className={`absolute font-luckiest text-orange-600  text-9xl  duration-500   ${
             hoveredMenuBtn ? 'scale-100 ' : 'scale-0'
           }`}
         >
