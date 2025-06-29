@@ -131,6 +131,8 @@ const FoodHero = () => {
         <video
           loop={inView}
           muted
+          playsInline
+          preload="auto"
           className="rounded-md pizza-position-grid "
           ref={pizzaRef}
         >
@@ -141,6 +143,8 @@ const FoodHero = () => {
         <video
           loop={inView}
           muted
+          playsInline
+          preload="auto"
           className="rounded-md burger-position-grid "
           ref={burgerRef}
         >
@@ -151,6 +155,8 @@ const FoodHero = () => {
         <video
           loop={inView}
           muted
+          playsInline
+          preload="auto"
           className="rounded-md hotdog-position-grid"
           ref={hotdogRef}
         >
