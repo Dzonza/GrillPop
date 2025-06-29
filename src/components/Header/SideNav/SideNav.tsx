@@ -25,16 +25,15 @@ const SideNav: FC<SideNavProps> = ({ isActiveNav, setIsActiveNav }) => {
         className=" w-10 h-10 cursor-pointer  sticky top-0 self-end text-red-600 "
         initial={{
           opacity: 0.8,
-          transition: { duration: 1, type: 'spring', stiffness: 100 },
+          transition: { type: 'spring', stiffness: 100 },
         }}
         whileHover={{
           opacity: 1,
           rotate: 180,
           transition: {
-            duration: 0.3,
             type: 'spring',
-            stiffness: 60,
-            damping: 5,
+            stiffness: 80,
+            damping: 10,
           },
         }}
         onClick={() => setIsActiveNav(false)}

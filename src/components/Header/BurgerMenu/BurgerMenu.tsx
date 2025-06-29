@@ -25,15 +25,15 @@ const BurgerMenu: FC<BurgerProps> = ({
         alt=""
       />
       <motion.div
-        className="absolute top-8 right-8 h-10 cursor-pointer text-red-600"
+        className="absolute top-8 right-8 h-10 w-10 cursor-pointer text-red-600"
         initial={{
           opacity: 0.8,
-          transition: { duration: 1, type: 'spring', stiffness: 100 },
+          transition: { type: 'spring', stiffness: 100 },
         }}
         whileHover={{
           opacity: 1,
           rotate: 180,
-          transition: { duration: 0.3, stiffness: 60, damping: 5 },
+          transition: { type: 'spring', stiffness: 80, damping: 10 },
         }}
         onClick={() => setIsActiveBurgerNav(false)}
       >
