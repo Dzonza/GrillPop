@@ -80,6 +80,7 @@ const PromoFoodItems: FC = () => {
           if (item.blastOffer) {
             return (
               <FoodCard
+                key={item.id}
                 id={item.id}
                 name={item.name}
                 price={+item.price}
@@ -105,8 +106,8 @@ const PromoFoodItems: FC = () => {
           Menu
         </p>
         <p
-          className={`absolute font-luckiest text-orange-600  text-9xl  duration-500   ${
-            hoveredMenuBtn ? 'scale-100 ' : 'scale-0'
+          className={`absolute font-luckiest  text-orange-600 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 text-9xl  duration-500   ${
+            hoveredMenuBtn ? 'scale-100' : 'scale-0'
           }`}
         >
           Menu
