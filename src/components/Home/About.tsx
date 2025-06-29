@@ -111,7 +111,14 @@ const About = () => {
             clipPath: 'polygon(81% 0, 100% 69%, 22% 100%, 0 45%)',
           }}
         >
-          <video loop ref={videoRef} muted className="h-full object-cover">
+          <video
+            loop
+            ref={videoRef}
+            muted
+            playsInline
+            preload="auto"
+            className="h-full object-cover"
+          >
             <source src={liquid} type="video/mp4" />
             <p>Your browser does not support the video tag.</p>
           </video>
