@@ -1,7 +1,7 @@
 import { faBars, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'motion/react';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import useResize from '../../customHooks/useResize';
@@ -14,6 +14,18 @@ const Header = () => {
   const [isActiveNav, setIsActiveNav] = useState<boolean>(false);
   const { width } = useResize();
   const [isActiveBurgerNav, setIsActiveBurgerNav] = useState<boolean>(false);
+
+  useEffect(() => {
+    const bodyEl = document.querySelector('body');
+    if (bodyEl) {
+      if (isActiveNav || isActiveBurgerNav) {
+        bodyEl.style.overflow = 'hidden';
+      } else {
+        bodyEl.style.overflow = 'auto';
+      }
+    }
+  }, [isActiveBurgerNav, isActiveNav]);
+
   return (
     <header className="px-5  sm:px-10 h-28 flex justify-between items-center top-0 fixed w-full bg-black z-10 max-w-[1600px] ">
       <Link to="/" className="text-center cursor-pointer">
