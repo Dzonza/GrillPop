@@ -17,7 +17,7 @@ const SideNav: FC<SideNavProps> = ({ isActiveNav, setIsActiveNav }) => {
   const { foodItems } = useContext(FoodList);
   return (
     <section
-      className={`fixed top-0 right-0 h-full bg-white w-full md:w-96 p-5 transform transition-transform ease-in-out duration-300 flex flex-col z-20 overflow-hidden  ${
+      className={`fixed top-0 right-0 h-full bg-white w-full md:w-96 p-5 transform transition-transform ease-in-out duration-300 flex flex-col z-50 overflow-hidden  ${
         isActiveNav ? ' translate-x-0' : 'translate-x-full'
       }`}
     >
